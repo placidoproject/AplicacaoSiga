@@ -1,20 +1,17 @@
-package com.example.gavin.aplicacaosiga;
+package com.example.gavin.aplicacaosiga.View;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import com.exemplo.gavin.DAO.DaoCliente;
+import com.example.gavin.aplicacaosiga.BO.ClienteBO;
+import com.example.gavin.aplicacaosiga.R;
+
+import com.example.gavin.aplicacaosiga.Validacao.Validation;
 import com.exemplo.gavin.Model.ModelCliente;
 import com.exemplo.gavin.msg.MensagemUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Cadastro_cliente extends Activity {
@@ -41,12 +38,12 @@ public class Cadastro_cliente extends Activity {
 
                 ModelCliente mo = new ModelCliente();
                 mo.setNOME(edtNome.getText().toString());
-                mo.setCPF(Long.parseLong(edtcpf.getText().toString()));
+                mo.setCPF((edtcpf.getText().toString()));
                 mo.setENDERECO(edtEndereco.getText().toString());
                 mo.setBAIRRO(edtbairro.getText().toString());
                 mo.setCIDADE(edtcidade.getText().toString());
 
-                  ValidacaoCliente resultado =  cliente.cadastrarCliente(mo);
+                  Validation resultado =  cliente.cadastrarCliente(mo);
                   MensagemUtil.addMsg(this,resultado.getMensagem());
                   Intent i = new Intent(this,listaCliente.class);
                   startActivity(i);

@@ -1,9 +1,9 @@
-package com.example.gavin.aplicacaosiga;
+package com.example.gavin.aplicacaosiga.Validacao;
 
 /**
- * Created by Gavin on 09/05/2015.
+ * Created by Gavin on 05/06/2015.
  */
-public class ValidacaoCliente {
+public class Validation {
 
     private boolean valido;
 

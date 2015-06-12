@@ -1,4 +1,4 @@
-package com.example.gavin.aplicacaosiga;
+package com.example.gavin.aplicacaosiga.View;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
+import com.example.gavin.aplicacaosiga.BO.ClienteBO;
+import com.example.gavin.aplicacaosiga.R;
 import com.exemplo.gavin.Model.ModelCliente;
 import com.exemplo.gavin.msg.MensagemUtil;
 
@@ -134,9 +136,10 @@ public class listaCliente extends Activity {
     private void consultarPorId() {
         lstCliente.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> adapter, View view, int id, long position) {
 
-                ModelCliente mo = clibo.consultaCliente(position + 1);
+                ModelCliente cliente = lista.get((int)position);
+                ModelCliente mo = clibo.consultaCliente(cliente.getID_CLIENTE());
 
                 String msg = "NOME= " + mo.getNOME() + "\nCPF= " + mo.getCPF() + "\nENDERECO= " + mo.getENDERECO() + "\nBAIRRO= " + mo.getBAIRRO() + "\nCIDADE= " + mo.getCIDADE();
 

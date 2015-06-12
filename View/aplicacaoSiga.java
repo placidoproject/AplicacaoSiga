@@ -1,4 +1,4 @@
-package com.example.gavin.aplicacaosiga;
+package com.example.gavin.aplicacaosiga.View;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,24 +11,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.gavin.aplicacaosiga.BO.UsuarioBO;
+import com.example.gavin.aplicacaosiga.R;
+
 
 public class aplicacaoSiga extends Activity {
 
     EditText login, senha;
-    Button entrar, cancelar;
+    Button entrar, cancelar,cadastrar;
+
+    UsuarioBO usuarioBo;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aplicacao_siga);
+
+        usuarioBo = new UsuarioBO(this);
 
         login = (EditText) findViewById(R.id.edt_login);
         senha = (EditText) findViewById(R.id.edt_password);
         entrar = (Button) findViewById(R.id.btn_entrar);
         cancelar = (Button) findViewById(R.id.btn_cancelar);
+        cadastrar = (Button) findViewById(R.id.btn_cadastroLogin);
 
         final SharedPreferences preference = getSharedPreferences("config",0);
+
 
 
         entrar.setOnClickListener(new View.OnClickListener() {
@@ -41,14 +50,21 @@ public class aplicacaoSiga extends Activity {
                 String strsenha = senha.getText().toString();
 
               */
+
                 String strlogin = preference.getString("login","admin");
                 String strsenha = preference.getString("senha","1234");
 
-                if(strlogin.equals(login.getText().toString()) && strsenha.equals(senha.getText().toString())){
+                boolean autentica = usuarioBo.AutenticaUsuario(login.getText().toString(), senha.getText().toString());
+
+                //if(strlogin.equals(login.getText().toString()) && strsenha.equals(senha.getText().toString())){
+                if (autentica){
                     Toast.makeText(aplicacaoSiga.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
+                    login.setText("");
+                    senha.setText("");
                     ChamaPrincipal();
                 }else{
                     Toast.makeText(aplicacaoSiga.this,"erro no Login ou Senha!!!",Toast.LENGTH_SHORT ).show();
+
                 }
             }
         });
@@ -62,12 +78,31 @@ public class aplicacaoSiga extends Activity {
             }
         });
 
+        cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChamarCadastroLogin();
+            }
+        });
+
+
+
 
     }
+
+
+
+
+
     public void ChamaPrincipal(){
-        Intent chamar = new Intent(this,principal.class);
+        //Intent chamar = new Intent(this,principal.class);
+        //startActivity(chamar);
+        setContentView(R.layout.activity_principal);
+    }
+
+    public void ChamarCadastroLogin(){
+        Intent chamar = new Intent(this,cadusuario.class);
         startActivity(chamar);
-        //setContentView(R.layout.dashborad);
     }
 
     @Override

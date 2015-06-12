@@ -1,7 +1,9 @@
-package com.example.gavin.aplicacaosiga;
+package com.example.gavin.aplicacaosiga.BO;
 
 import android.content.Context;
 
+
+import com.example.gavin.aplicacaosiga.Validacao.Validation;
 import com.exemplo.gavin.DAO.DaoCliente;
 import com.exemplo.gavin.Model.ModelCliente;
 
@@ -19,8 +21,8 @@ public class ClienteBO {
         cliDAO = new DaoCliente(ctx);
     }
 
-    public ValidacaoCliente cadastrarCliente(ModelCliente clienteModel){
-        ValidacaoCliente retorno = new ValidacaoCliente();
+    public Validation cadastrarCliente(ModelCliente clienteModel){
+        Validation retorno = new Validation();
         cliDAO.inserirCliente(clienteModel);
         retorno.setValido(true);
         retorno.setMensagem("Cliente cadastrado com sucesso");
@@ -36,7 +38,12 @@ public class ClienteBO {
         return cliDAO.pesquisaClientePorID(idcliente);
     }
 
-    public void RemoverCliente(Integer IdCliente){
+    public void RemoverCliente(Integer IdCliente) {
         cliDAO.RemoverCliente(IdCliente);
     }
+
+    public void AtualizarCliente(ModelCliente cliente){
+        cliDAO.AtualizarClientePorId(cliente);
+    }
+
 }
