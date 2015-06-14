@@ -66,6 +66,7 @@ public class tarefa extends Activity {
         ModelApiario apiario = (ModelApiario) spTarefaApiario.getSelectedItem();
         mo.setFk_id_apiario(apiario.getID_APIARIO());
         ModelCaixa caixa = (ModelCaixa) spTarefaCaixa.getSelectedItem();
+        mo.setFk_id_caixa(caixa.getID_CAIXA());
 
 
         Validation resultado =  tarefa.cadastrarTarefa(mo);

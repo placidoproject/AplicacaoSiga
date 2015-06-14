@@ -76,7 +76,7 @@ public class listaCaixaPorApiario extends Activity {
                 valores.add(modelcaixa.getNOMECAIXA());
         }
 
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_list_item_1, valores);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, R.layout.listitem, valores);
 
         lstCaixa.setAdapter(adapter);
 
@@ -145,7 +145,7 @@ public class listaCaixaPorApiario extends Activity {
                 ModelCaixa caixa=lista.get((int)position);
                 ModelCaixa mo = caixabo.consultaCaixa(caixa.getID_CAIXA());
 
-                String msg = "NOMECAIXA= " + mo.getNOMECAIXA() + "\nDATACAIXA= " + mo.getDATACAIXA() + "\nfk_id_apiario= " + apiariodao.pesquisaID(mo.getFk_id_apiario()).getDESCRICAO();
+                String msg = "Nome= " + mo.getNOMECAIXA() + "\nData= " + mo.getDATACAIXA() + "\nApiário= " + apiariodao.pesquisaID(mo.getFk_id_apiario()).getDESCRICAO();
 
                 MensagemUtil.addMsgOk(listaCaixaPorApiario.this, "Info", msg, R.drawable.ic_launcher);
 

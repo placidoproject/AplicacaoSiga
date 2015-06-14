@@ -71,7 +71,7 @@ public class listarApiario extends Activity {
             valores.add(modelApiario.getDESCRICAO());
         }
 
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_list_item_1, valores);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, R.layout.listitem, valores);
 
         lstApiario.setAdapter(adapter);
 

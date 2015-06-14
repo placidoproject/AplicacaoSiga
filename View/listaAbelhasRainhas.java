@@ -72,7 +72,7 @@ public class listaAbelhasRainhas extends Activity {
             valores.add(modelabelha.getDESCRICAOABELHA());
         }
 
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_list_item_1, valores);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, R.layout.listitem, valores);
 
         lstAbelha.setAdapter(adapter);
 

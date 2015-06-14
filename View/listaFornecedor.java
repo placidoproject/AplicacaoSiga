@@ -68,7 +68,7 @@ public class listaFornecedor extends Activity {
             valores.add(modelfornecedor.getNOMEFOR());
         }
 
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_list_item_1, valores);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, R.layout.listitem, valores);
 
         lstFornecedor.setAdapter(adapter);
 

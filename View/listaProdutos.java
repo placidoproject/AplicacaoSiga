@@ -85,7 +85,7 @@ public class listaProdutos extends Activity implements SearchView.OnQueryTextLis
                     valores.add(modelproduto.getTIPO()+" - "+modelproduto.getDATAPRODUTO());
         }
 
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_list_item_1, valores);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, R.layout.listitem, valores);
 
         lstProdutos.setAdapter(adapter);
 

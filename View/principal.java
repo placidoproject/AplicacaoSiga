@@ -15,7 +15,7 @@ import com.example.gavin.aplicacaosiga.tarefa;
 
 public class principal extends Activity {
 
-    Button btapiario,btcliente,btcaixa,btfornecedor,btProduto,btAbelha,btTarefa;
+    Button btapiario,btcliente,btcaixa,btfornecedor,btProduto,btAbelha,btTarefa,btRelatorio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class principal extends Activity {
         btProduto = (Button) findViewById(R.id.btn_CadProduto);
         btAbelha = (Button) findViewById(R.id.btn_CadRainha);
         btTarefa = (Button) findViewById(R.id.btn_CadTarefa);
+        btRelatorio = (Button) findViewById(R.id.btn_Relatorio);
 
 
         btapiario.setOnClickListener(new View.OnClickListener() {
@@ -79,10 +80,10 @@ public class principal extends Activity {
             }
         });
 
-        btTarefa.setOnClickListener(new View.OnClickListener() {
+        btRelatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exibirRelatorioTarefas();
+                exibirRelatorio();
             }
         });
 
@@ -153,11 +154,17 @@ public class principal extends Activity {
 
     }
 
+    public void exibirRelatorio(){
+        Intent chamar = new Intent(this,listaRelatorio.class);
+        startActivity(chamar);
+
+    }
+/*
     public void exibirRelatorioTarefas(){
         Relatorios.checkRelatorios().gerarPDFRelatorioTarefa();
         Relatorios.checkRelatorios().AbrirRelatorio("sample.pdf");
         Intent chamar = new Intent(this, Relatorios.class);
         startActivity(chamar);
 
-    }
+    }*/
 }

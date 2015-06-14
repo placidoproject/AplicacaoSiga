@@ -34,7 +34,7 @@ public class apiario extends Activity  {
         btApiario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CadastrarApiario(v);
+                CadastrarApiario();
             }
         });
 
@@ -42,7 +42,7 @@ public class apiario extends Activity  {
     }
 
 
-    public void CadastrarApiario(View v){
+    public void CadastrarApiario(){
 
         ModelApiario mo = new ModelApiario();
         mo.setDESCRICAO(edtApiario.getText().toString());

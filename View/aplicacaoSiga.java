@@ -95,9 +95,9 @@ public class aplicacaoSiga extends Activity {
 
 
     public void ChamaPrincipal(){
-        //Intent chamar = new Intent(this,principal.class);
-        //startActivity(chamar);
-        setContentView(R.layout.activity_principal);
+        Intent chamar = new Intent(this,principal.class);
+        startActivity(chamar);
+        //setContentView(R.layout.activity_principal);
     }
 
     public void ChamarCadastroLogin(){

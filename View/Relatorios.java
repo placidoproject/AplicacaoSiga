@@ -47,7 +47,7 @@ public class Relatorios extends Activity{
         Document pdf = new Document();
 
         try {
-            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/droidText";
+            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/SIGA";
 
             File dir = new File(path);
             if(!dir.exists())
@@ -56,7 +56,7 @@ public class Relatorios extends Activity{
             Log.d("PDFCreator", "PDF Path: " + path);
 
 
-            File file = new File(dir, "sample.pdf");
+            File file = new File(dir, "relatorio_tarefa.pdf");
             FileOutputStream fOut = new FileOutputStream(file);
 
             PdfWriter.getInstance(pdf, fOut);
@@ -74,6 +74,7 @@ public class Relatorios extends Activity{
             //add paragraph to document
             pdf.add(p1);
             List<ModelTarefa> a = bo.listTarefa();
+
             for (ModelTarefa tarefa : a) {
                 Paragraph p2 = new Paragraph(tarefa.getTAREFAS()+"-"+tarefa.getDATATAREFA()+"-Atividade:"+checkBool(tarefa.getATIVIDADE()));
                 Font paraFont2 = new Font(Font.COURIER, 14.0f, Color.GREEN);
@@ -82,6 +83,7 @@ public class Relatorios extends Activity{
 
                 pdf.add(p2);
             }
+            /*
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             Bitmap bitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.ic_launcher);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100 , stream);
@@ -89,7 +91,7 @@ public class Relatorios extends Activity{
             myImg.setAlignment(Image.MIDDLE);
 
             //add image to document
-            pdf.add(myImg);
+            pdf.add(myImg);*/
 
             //set footer
             Phrase footerText = new Phrase("This is an example of a footer");
@@ -119,12 +121,12 @@ public class Relatorios extends Activity{
 
     public static Relatorios checkRelatorios() {
         if(relatorios==null)
-        relatorios = new Relatorios();
+            relatorios = new Relatorios();
         return relatorios;
     }
-
+/*
     public void AbrirRelatorio(String name){
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/droidText/" + name);
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/SIGA/" + name);
         Intent target = new Intent(Intent.ACTION_VIEW);
         target.setDataAndType(Uri.fromFile(file), "application/pdf");
         target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -133,6 +135,6 @@ public class Relatorios extends Activity{
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e){}
-    }
+    }*/
 }
 

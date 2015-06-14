@@ -1,15 +1,8 @@
 package com.example.gavin.aplicacaosiga.View;
 
 import android.app.Activity;
-import android.app.SearchManager;
-import android.app.SearchableInfo;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,18 +11,14 @@ import android.widget.SearchView;
 
 import com.example.gavin.aplicacaosiga.BO.EstoqueBO;
 import com.example.gavin.aplicacaosiga.R;
-import com.exemplo.gavin.Model.ModelProduto;
-import com.exemplo.gavin.msg.MensagemUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class listaBlock extends Activity{
+public class listaRelatorio extends Activity{
 
-    private EstoqueBO estoquebo;
-
-    private ListView lstBlock;
+    private ListView lstRelatorio;
     private SearchView sv;
 
     public Long getPosicao() {
@@ -46,11 +35,10 @@ public class listaBlock extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listaitemproduto);
-        setTitle("Lista de Blocks de Estoque");
+        setTitle("Tipo de Relatorio");
 
-        lstBlock = (ListView) findViewById(R.id.lst_itemProd);
+        lstRelatorio = (ListView) findViewById(R.id.lst_itemProd);
 
-        estoquebo = new EstoqueBO(this);
         this.listarBlock(null);
         this.consultarPorId();
 
@@ -61,28 +49,25 @@ public class listaBlock extends Activity{
 
         List<CharSequence> valores = new ArrayList<CharSequence>();
 
-        valores.add("Block Mel Claro");
-        valores.add("Block Mel Escuro");
-        valores.add("Block Cera");
-        valores.add("Block Geléia Real");
-        valores.add("Block Própolis");
-        valores.add("Block Mel Intermediario");
+        valores.add("Relatório de Terefas");
+        valores.add("Relatório de Caixas");
+        valores.add("Relatório de Produtos");
 
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, R.layout.listitem, valores);
 
-        lstBlock.setAdapter(adapter);
+        lstRelatorio.setAdapter(adapter);
 
     }
 
     private void consultarPorId() {
-        lstBlock.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lstRelatorio.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int id, long position) {
 
-                //MensagemUtil.addMsgOk(listaBlock.this, "Info", lstBlock.getItemAtPosition((int)position).toString(), R.drawable.ic_launcher);
+                //MensagemUtil.addMsgOk(listaRelatorio.this, "Info", lstBlock.getItemAtPosition((int)position).toString(), R.drawable.ic_launcher);
 
-                Intent i = new Intent(view.getContext(),listaProdutos.class);
-                i.putExtra("tipo",lstBlock.getItemAtPosition((int)position).toString());
+                Intent i = new Intent(view.getContext(), exibirRelatorio.class);
+                i.putExtra("tipo", lstRelatorio.getItemAtPosition((int) position).toString());
                 startActivity(i);
                 finish();
             }
